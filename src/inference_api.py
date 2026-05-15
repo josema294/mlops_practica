@@ -5,7 +5,9 @@ from typing import List
 
 import pandas as pd
 import torch
+import wandb
 import yaml
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -22,6 +24,7 @@ except ImportError:
 
 
 logger = setup_logging()
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[1] / ".env")
 
 MODEL = None
 CONFIG = None
@@ -100,6 +103,60 @@ def load_training_normalization(base_dir: Path, config: dict):
     }
 
 
+def download_model_artifact(base_dir: Path, config: dict) -> Path:
+    artifact_config = config.get("artifacts", {})
+    artifact_name = artifact_config.get("model_artifact", "train-anomaly-autoencoder:latest")
+    model_filename = artifact_config.get("model_filename", "autoencoder_v1.pth")
+    models_dir = base_dir / "models"
+    models_dir.mkdir(exist_ok=True)
+
+    logger.info("Modelo local no encontrado. Descargando artifact de W&B: %s", artifact_name)
+
+    run = None
+    try:
+        run = wandb.init(
+            project=config["logging"]["project_name"],
+            job_type="inference",
+            anonymous="allow",
+            reinit=True,
+        )
+        artifact = run.use_artifact(artifact_name, type="model")
+        artifact_dir = Path(artifact.download(root=str(models_dir)))
+        downloaded_model = artifact_dir / model_filename
+
+        if not downloaded_model.exists():
+            candidates = list(artifact_dir.glob("*.pth"))
+            if len(candidates) == 1:
+                downloaded_model = candidates[0]
+            else:
+                raise FileNotFoundError(
+                    f"No se encontro {model_filename} en el artifact descargado: {artifact_dir}"
+                )
+
+        logger.info("Artifact descargado desde W&B en %s", downloaded_model)
+        return downloaded_model
+    except Exception as exc:
+        raise FileNotFoundError(
+            "No se encontro el modelo local y no se pudo descargar desde W&B. "
+            "Comprueba que el artifact sea publico o configura WANDB_API_KEY con acceso."
+        ) from exc
+    finally:
+        if run is not None:
+            run.finish()
+
+
+def get_model_path(base_dir: Path, config: dict) -> Path:
+    artifact_config = config.get("artifacts", {})
+    model_filename = artifact_config.get("model_filename", "autoencoder_v1.pth")
+    model_path = base_dir / "models" / model_filename
+
+    if model_path.exists():
+        logger.info("Cargando modelo local desde %s", model_path)
+        return model_path
+
+    return download_model_artifact(base_dir, config)
+
+
 def load_model_artifact():
     global MODEL, CONFIG, DEVICE, NORMALIZATION, THRESHOLD
 
@@ -113,9 +170,7 @@ def load_model_artifact():
         kernel_size=CONFIG["model"]["kernel_size"],
     ).to(DEVICE)
 
-    model_path = base_dir / "models" / "autoencoder_v1.pth"
-    if not model_path.exists():
-        raise FileNotFoundError(f"No se encontro el modelo en {model_path}. Entrena el modelo primero.")
+    model_path = get_model_path(base_dir, CONFIG)
 
     artifact = torch.load(model_path, map_location=DEVICE)
     if isinstance(artifact, dict) and "model_state_dict" in artifact:

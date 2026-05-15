@@ -29,3 +29,7 @@ inference:
 logging:
   project_name: "train-anomaly-detection"
   run_name: "run-03-large-model"
+
+artifacts:
+  model_artifact: "train-anomaly-autoencoder:latest"
+  model_filename: "autoencoder_v1.pth"
