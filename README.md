@@ -18,22 +18,56 @@ No podemos obviamente tener el proyecto completo con todas las funcionalidades y
 
 
 
-'Instrucciones de uso:
-- Clonar el repositorio
-- Construir dockerbuild: docker build -t "tag_de_la_imagen" .
-- Levantar el notebook: docker run --rm -p 8888:8888 -v "$(pwd):/app" mlops_proyecto
-- Correr entrenamiento: docker run --rm -v "$(pwd):/app" mlops_proyecto python -m src.train
-- Correr test: docker run --rm -v "$(pwd):/app" mlops_proyecto python -m pytest tests
-- Levantar API inferencia: docker run --rm -p 8000:8000 -v "$(pwd):/app" mlops_proyecto uvicorn src.inference_api:app --host 0.0.0.0 --port 8000
-'
+## Instrucciones de uso
 
-El proyecto de W&B esta publico en 'https://wandb.ai/jmaranguren89-upm/train-anomaly-detection?nw=nwuserjmaranguren89'
-Y el link del report es el siguiente 'https://wandb.ai/jmaranguren89-upm/train-anomaly-detection/reports/Analisis-anomalias-en-infraestructura-ferroviaria---VmlldzoxNjg4NDMzOA'
+- Clonar el repositorio
+
+- Construir dockerbuild:
+
+```bash
+docker build -t "tag_de_la_imagen" .
+```
+
+- Levantar el notebook:
+
+```bash
+docker run --rm -p 8888:8888 -v "$(pwd):/app" mlops_proyecto
+```
+
+- Correr entrenamiento:
+
+```bash
+docker run --rm -v "$(pwd):/app" mlops_proyecto python -m src.train
+```
+
+- Correr test:
+
+```bash
+docker run --rm -v "$(pwd):/app" mlops_proyecto python -m pytest tests
+```
+
+- Levantar API inferencia:
+
+```bash
+docker run --rm -p 8000:8000 -v "$(pwd):/app" mlops_proyecto uvicorn src.inference_api:app --host 0.0.0.0 --port 8000
+```
+
+## W&B
+
+El proyecto de W&B esta publico en:
+
+https://wandb.ai/jmaranguren89-upm/train-anomaly-detection?nw=nwuserjmaranguren89
+
+Y el link del report es el siguiente:
+
+https://wandb.ai/jmaranguren89-upm/train-anomaly-detection/reports/Analisis-anomalias-en-infraestructura-ferroviaria---VmlldzoxNjg4NDMzOA
 
 
 El proyecto siguiendo los conceptos vistos en clase, no guarda el modelo .pth, este esta en w&b que he configurado con visibilidad publica. La api de inferencia esta configurado para usar el modelo de la carpeta models/ que no esta trackeado por git, y no existiendo intenta bajarselo de W&B, en local con .env con la api key ha funcionado sin problemas, por si acaso incluso siendo publico el proyecto no lo descargara, se puede reentrenar le modelo que tarda poco, o tambien lo he subido como release a github para poder ser descargado y metido en la carpeta models/.
 
-link modelo: https://github.com/josema294/mlops_practica/releases/tag/modelos
+link modelo:
+
+https://github.com/josema294/mlops_practica/releases/tag/modelos
 
 ---
 
