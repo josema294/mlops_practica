@@ -27,7 +27,8 @@ El proyecto se ha diseñado para ir cumpliendo los requerimientos de la asignatu
 - [x] **Pasamos noteebok a archivos python:** Tras haber creado el modelo funcional de pruenbas, empezamos a crear arvhivos mas profesionales en src/ incluyendo loggin y w&b cargado con apikey en .env
 - [x] **Runs de pruebas, seleccion de modelo en W&B:** Se corren multiples modelos y pruebas y se elige modelo ganador, los detalles se especificaran en el reporte de W&B 
 - [x] **Creada api de inferencia:**  Se crea la api, autocontenida con su propio html,css,js para poder despleghar tambien un frontend usable por el profesor/evaluador.
- 
- 
+- [x] **Agrego enlace a reporte de W&B:** Se agrega en readme enalce a reporte de W&B, tambien version pdf subida al repositorio por su surgiera problemas de acceso al enlace.
+- [X] **Datos de testeo:** Para poder usar la api de inferencia se necesitan datos de vibraciones de la via, como es logico que el evaluador del proyecto no los tenga, creo carpeta co ndatos ligeros en test/datatest/, estos son los datos sinteticos creados para poder probar en la api de inferencia, uno pensado especificamente para ser similar a los datos sinteticos utilizados para el entrenamiento, y otro pensado para tener picos y alteraciones que hagan detectarlo como anomalia. Esctos csv se podran subir a la api para probarla cuando este levantada.
+- [X] **Inclusion de test:** Se incluyen test de pyhton y se actuyaliza el requirements.txt 
  
  
