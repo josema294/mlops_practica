@@ -25,7 +25,7 @@ El proyecto se ha diseñado para ir cumpliendo los requerimientos de la asignatu
 - [x] **Creacion del notebook para experimentaciones** Creoacion del cuadernillo para pruebas y experimentacion con modelos.
 - [x] **Notebook:** Paso el notebook con la base del proyecto de DL, autoencoder para deteccion de anomalias. 
 - [x] **Pasamos noteebok a archivos python** Tras haber creado el modelo funcional de pruenbas, empezamos a crear arvhivos mas profesionales en src/ incluyendo loggin y w&b cargado con apikey en .env
- 
+- [x] **Runs de pruebas, seleccion de modelo en W&B* Se corren multiples modelos y pruebas y se elige modelo ganador, los detalles se especificaran en el reporte de W&B 
  
  
  

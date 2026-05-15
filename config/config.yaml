@@ -10,7 +10,7 @@ data:
 
 model:
   in_channels: 3
-  encoder_filters: [16, 32, 64]
+  encoder_filters: [32, 64, 128]
   kernel_size: 5
 
 training:
@@ -22,10 +22,10 @@ training:
 
 inference:
   threshold: 0.005
-  threshold_quantile: 0.999
+  threshold_quantile: 0.995
   min_anomaly_ratio: 0.02
   severe_threshold_multiplier: 3.0
 
 logging:
   project_name: "train-anomaly-detection"
-  run_name: "run-10-threshold-0999"
+  run_name: "run-03-large-model"
