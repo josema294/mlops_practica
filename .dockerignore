@@ -41,8 +41,7 @@ logs/
 .DS_Store
 
 # --- Notebooks ---
-# Los notebooks suelen ser para experimentación, no para el runtime de la API
-notebooks/
+# Incluimos notebooks en esta fase porque el contenedor arranca Jupyter.
 .ipynb_checkpoints/
 
 # --- Config & Secrets ---

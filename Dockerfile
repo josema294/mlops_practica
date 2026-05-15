@@ -7,7 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8888
 
-ENTRYPOINT ["uvicorn", "src.inference_api:app"]
-CMD ["--host", "0.0.0.0", "--port", "8000"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
