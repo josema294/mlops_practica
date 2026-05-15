@@ -1,0 +1,50 @@
+# --- Git & Metadata ---
+.git
+.gitignore
+.gitattributes
+.dockerignore
+
+# --- Python & Environments ---
+# Ignora el venv local para que no interfiera con el de la imagen
+venv/
+.venv/
+env/
+ENV/
+bin/
+lib/
+# Artefactos de compilación y caché
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.tox/
+.coverage
+htmlcov/
+
+# --- MLOps & Data (Crucial) ---
+# No metas datasets ni modelos pesados si los vas a montar por volúmenes
+data/
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.pkl
+outputs/
+logs/
+.dvc/
+
+# --- IDEs & OS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Notebooks ---
+# Los notebooks suelen ser para experimentación, no para el runtime de la API
+notebooks/
+.ipynb_checkpoints/
+
+# --- Config & Secrets ---
+.env
+*.log

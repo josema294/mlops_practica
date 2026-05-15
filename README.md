@@ -23,6 +23,8 @@ El proyecto se ha diseñado para ir cumpliendo los requerimientos de la asignatu
 
 - [x] **Creacion de carpeta y repositorio git:** Creado en el primer commit.
 - [x] **Estructura de Proyecto:** Organizo el proyecto en las carpetas esenciales segun lo visto en clase (`src/`, `data/`, `models/`, `notebooks/`,`tests/`) y archivos accesorios esenciales, como el Dockerfile, .gitignore etc.
+- [x] **Docker archivos configuracion** Relleno el dockerfile con imagen pythonslim como visto en clase y el .dockerignore con una plantilla de ignores tipicos.
+
 
  
  
