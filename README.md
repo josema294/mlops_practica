@@ -26,6 +26,7 @@ El proyecto se ha diseñado para ir cumpliendo los requerimientos de la asignatu
 - [x] **Docker archivos configuracion** Relleno el dockerfile con imagen pythonslim como visto en clase y el .dockerignore con una plantilla de ignores tipicos.
 - [x] **Creacion del notebook para experimentaciones** Creoacion del cuadernillo para pruebas y experimentacion con modelos.
 - [x] **Notebook:** Paso el notebook con la base del proyecto de DL, autoencoder para deteccion de anomalias. 
+- [x] **Pasamos noteebok a archivos python** Tras haber creado el modelo funcional de pruenbas, empezamos a crear arvhivos mas profesionales en src/ incluyendo loggin y w&b cargado con apikey en .env
  
  
  
