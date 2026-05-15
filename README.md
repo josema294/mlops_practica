@@ -21,12 +21,12 @@ El proyecto se ha diseñado para ir cumpliendo los requerimientos de la asignatu
 
 - [x] **Creacion de carpeta y repositorio git:** Creado en el primer commit.
 - [x] **Estructura de Proyecto:** Organizo el proyecto en las carpetas esenciales segun lo visto en clase (`src/`, `data/`, `models/`, `notebooks/`,`tests/`) y archivos accesorios esenciales, como el Dockerfile, .gitignore etc.
-- [x] **Docker archivos configuracion** Relleno el dockerfile con imagen pythonslim como visto en clase y el .dockerignore con una plantilla de ignores tipicos.
-- [x] **Creacion del notebook para experimentaciones** Creoacion del cuadernillo para pruebas y experimentacion con modelos.
+- [x] **Docker archivos configuracion:** Relleno el dockerfile con imagen pythonslim como visto en clase y el .dockerignore con una plantilla de ignores tipicos.
+- [x] **Creacion del notebook para experimentaciones:** Creoacion del cuadernillo para pruebas y experimentacion con modelos.
 - [x] **Notebook:** Paso el notebook con la base del proyecto de DL, autoencoder para deteccion de anomalias. 
-- [x] **Pasamos noteebok a archivos python** Tras haber creado el modelo funcional de pruenbas, empezamos a crear arvhivos mas profesionales en src/ incluyendo loggin y w&b cargado con apikey en .env
-- [x] **Runs de pruebas, seleccion de modelo en W&B* Se corren multiples modelos y pruebas y se elige modelo ganador, los detalles se especificaran en el reporte de W&B 
- 
+- [x] **Pasamos noteebok a archivos python:** Tras haber creado el modelo funcional de pruenbas, empezamos a crear arvhivos mas profesionales en src/ incluyendo loggin y w&b cargado con apikey en .env
+- [x] **Runs de pruebas, seleccion de modelo en W&B:** Se corren multiples modelos y pruebas y se elige modelo ganador, los detalles se especificaran en el reporte de W&B 
+- [x] **Creada api de inferencia:**  Se crea la api, autocontenida con su propio html,css,js para poder despleghar tambien un frontend usable por el profesor/evaluador.
  
  
  
