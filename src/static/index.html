@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detector de vibraciones</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Detector de anomalias en via</h1>
+      <p>Sube un CSV con columnas <code>accel_x</code>, <code>accel_y</code>, <code>accel_z</code> para analizar el perfil de vibraciones.</p>
+
+      <section class="panel">
+        <div class="upload-row">
+          <label>
+            CSV de vibraciones
+            <input id="file" type="file" accept=".csv,text/csv" />
+          </label>
+          <button id="send">Analizar</button>
+        </div>
+      </section>
+
+      <section id="result" class="status pending">
+        <div class="status-title">Esperando archivo</div>
+        <div>Selecciona un CSV y lanza el analisis.</div>
+      </section>
+
+      <section id="chartPanel" class="panel chart-panel">
+        <div class="chart-toolbar">
+          <label>
+            Ventana
+            <select id="windowSelect"></select>
+          </label>
+          <label>
+            Canal
+            <select id="channelSelect">
+              <option value="accel_x">accel_x</option>
+              <option value="accel_y">accel_y</option>
+              <option value="accel_z" selected>accel_z</option>
+            </select>
+          </label>
+        </div>
+        <canvas id="vibrationChart" width="900" height="320"></canvas>
+        <div class="legend">
+          <span class="legend-item"><span class="swatch selected-line"></span>Ventana seleccionada</span>
+          <span class="legend-item"><span class="swatch average-line"></span>Perfil promedio del CSV</span>
+        </div>
+        <div id="chartNote" class="chart-note"></div>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
